@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Badge } from "../ui/badge";
 import ProductGrid from "../ProductGrid";
-import CategoryFilter from "../CategoryFilter";
+import CategoryFilter, { type FilterOptions } from "../CategoryFilter";
 import { mockProducts } from "../mockData";
 
 interface CategoryPageProps {

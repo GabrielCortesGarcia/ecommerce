@@ -82,7 +82,7 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login", onNav
       } else {
         setErrors({ general: "Email o contraseña incorrectos" });
       }
-    } catch (error) {
+    } catch {
       setErrors({ general: "Error al iniciar sesión" });
     } finally {
       setIsLoading(false);
@@ -102,7 +102,7 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login", onNav
       } else {
         setErrors({ general: "Error al crear la cuenta" });
       }
-    } catch (error) {
+    } catch {
       setErrors({ general: "Error al registrarse" });
     } finally {
       setIsLoading(false);

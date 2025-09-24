@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
+// Removed import for navigationMenuTriggerStyle as it is defined locally below.
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "./utils";
@@ -154,7 +155,6 @@ function NavigationMenuIndicator({
     </NavigationMenuPrimitive.Indicator>
   );
 }
-
 export {
   NavigationMenu,
   NavigationMenuList,
@@ -164,7 +164,4 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
-  navigationMenuTriggerStyle,
 };
-
-//corregir

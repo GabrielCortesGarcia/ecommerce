@@ -6,10 +6,40 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 
+interface ShippingAddress {
+  name: string;
+  address: string;
+  city: string;
+  zipCode: string;
+}
+
+interface TimelineStep {
+  status: string;
+  date: string;
+  completed: boolean;
+}
+
+interface OrderItem {
+  name: string;
+  quantity: number;
+  price: number;
+}
+
+interface OrderData {
+  orderNumber: string;
+  status: string;
+  estimatedDelivery: string;
+  trackingNumber: string;
+  items: OrderItem[];
+  total: number;
+  shippingAddress: ShippingAddress;
+  timeline: TimelineStep[];
+}
+
 export default function OrderStatus() {
   const [orderNumber, setOrderNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [orderData, setOrderData] = useState<any>(null);
+  const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = async () => {
@@ -201,7 +231,7 @@ export default function OrderStatus() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {orderData.timeline.map((step: any, index: number) => (
+                {orderData.timeline.map((step: TimelineStep) => (
                   <div key={step.status} className="flex items-center gap-4">
                     <div className={`
                       w-8 h-8 rounded-full flex items-center justify-center text-white
@@ -232,7 +262,7 @@ export default function OrderStatus() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {orderData.items.map((item: any, index: number) => (
+                {orderData.items.map((item: OrderItem, index: number) => (
                   <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
                     <div>
                       <p className="font-medium">{item.name}</p>
@@ -266,5 +296,3 @@ export default function OrderStatus() {
     </motion.div>
   );
 }
-
-//corregir
