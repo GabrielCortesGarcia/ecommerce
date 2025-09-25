@@ -1,7 +1,33 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./"),
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'motion/react', 'lucide-react']
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['motion/react', 'lucide-react']
+        }
+      }
+    }
+  },
+  server: {
+    port: 3000,
+    open: true
+  }
 })
